@@ -6,8 +6,7 @@ class PersonalSite
     case env["PATH_INFO"]
     when '/' then index
     when '/main.css' then css
-    else
-      error
+  
     end
   end
 
@@ -23,9 +22,6 @@ class PersonalSite
     render_view('index.html')
   end
 
-  def self.error
-    render_view('error.html', '404')
-  end
 
   def self.render_view(page, code = '200')
     [code, {'Content-Type' => 'text/html'}, [File.read("./app/views/#{page}")]]
